@@ -11,7 +11,6 @@
 	<groupId>com.ms</groupId>
 	<artifactId>commande</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
 	<name>commande</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -22,9 +21,18 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -41,9 +49,4 @@
 		</plugins>
 	</build>
 
-	<modules>
-		<module>commande-modele</module>
-		<module>commande-consumer</module>
-		<module>commande-controller</module>
-	</modules>
 </project>
