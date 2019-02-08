@@ -10,7 +10,7 @@ import com.ms.commande.model.Commande;
 
 
 public interface CommandeRepository extends JpaRepository<Commande, Long>{
-	List<Commande> findByDate(Date date);
+	  List<Commande> findByDate(Date date);
 	
 	  Commande findById(Integer id);
 }

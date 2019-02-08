@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "commande")
@@ -23,6 +24,7 @@ public class Commande implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "command_id")
 	private Integer id;
+//	@Min(value =2 , message = "Le userId doit avoir au minimum 4 caractéres")
 	@Column(name = "user_id")
 	private Integer userId;
 	@Column(name = "session_id")
