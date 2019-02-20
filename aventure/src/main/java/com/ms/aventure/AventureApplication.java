@@ -1,13 +1,13 @@
-package com.ms.category;
+package com.ms.aventure;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CategoryApplication {
+public class AventureApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CategoryApplication.class, args);
+		SpringApplication.run(AventureApplication.class, args);
 	}
 
 }
