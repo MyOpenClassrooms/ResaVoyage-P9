@@ -1,4 +1,4 @@
-package com.ms.metier.msutilisateur;
+package com.ms.utilisateur;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
