@@ -2,6 +2,9 @@ package com.ms.category;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import brave.sampler.Sampler;
 
 @SpringBootApplication
 public class CategoryApplication {
@@ -10,4 +13,10 @@ public class CategoryApplication {
 		SpringApplication.run(CategoryApplication.class, args);
 	}
 
+	//Exportation des requétes vers zipkin
+		@Bean
+		Sampler getSample() {
+			return Sampler.ALWAYS_SAMPLE;
+			
+		}
 }
