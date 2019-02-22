@@ -1,4 +1,4 @@
-package com.ms.commentaire;
+package com.ms.mscommentaire;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CommentaireApplicationTests {
+public class MsCommentaireApplicationTests {
 
 	@Test
 	public void contextLoads() {
