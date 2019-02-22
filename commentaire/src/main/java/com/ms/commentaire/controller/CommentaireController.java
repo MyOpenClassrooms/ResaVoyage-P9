@@ -1,6 +1,7 @@
-package com.ms.mscommentaire.controller;
+package com.ms.commentaire.controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ms.mscommentaire.model.Commentaire;
-import com.ms.mscommentaire.repository.CommentaireDao;
+import com.ms.commentaire.model.Commentaire;
+import com.ms.commentaire.repository.CommentaireDao;
 
 @RestController
 public class CommentaireController {
