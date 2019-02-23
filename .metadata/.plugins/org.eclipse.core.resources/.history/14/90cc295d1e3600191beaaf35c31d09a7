@@ -1,0 +1,5 @@
+package com.ms.commande.configuration;
+
+public class SleuthConfig {
+
+}
