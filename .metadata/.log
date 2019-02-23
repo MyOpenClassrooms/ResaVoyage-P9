@@ -10271,3 +10271,22 @@ Contains: Missing org.springframework.cloud:spring-cloud-starter-netflix-eureka-
 !MESSAGE Save operation warnings.
 !SUBENTRY 1 org.eclipse.core.resources 2 234 2019-02-23 14:13:36.899
 !MESSAGE The project description file (.project) for 'RemoteSystemsTempFiles' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+
+!ENTRY org.eclipse.core.resources 2 2 2019-02-23 14:18:39.672
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2019-02-23 14:18:39.672
+!MESSAGE The project description file (.project) for 'RemoteSystemsTempFiles' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2019-02-23 14:18:39.672
+!MESSAGE The project description file (.project) for 'aventure' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2019-02-23 14:18:39.672
+!MESSAGE The project description file (.project) for 'category' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2019-02-23 14:18:39.672
+!MESSAGE The project description file (.project) for 'commande' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2019-02-23 14:18:39.672
+!MESSAGE The project description file (.project) for 'commentaire' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2019-02-23 14:18:39.672
+!MESSAGE The project description file (.project) for 'eureka-server' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2019-02-23 14:18:39.672
+!MESSAGE The project description file (.project) for 'paiement' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2019-02-23 14:18:39.672
+!MESSAGE The project description file (.project) for 'utilisateur' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
