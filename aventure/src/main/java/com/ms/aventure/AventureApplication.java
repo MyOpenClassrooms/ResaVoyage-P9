@@ -6,7 +6,10 @@ import org.springframework.context.annotation.Bean;
 
 import brave.sampler.Sampler;
 
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
 @SpringBootApplication
+@EnableDiscoveryClient
 public class AventureApplication {
 
 	public static void main(String[] args) {

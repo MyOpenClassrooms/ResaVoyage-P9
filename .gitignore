@@ -1,3 +1,4 @@
 /.metadata/
 /.recommenders/
 .idea/
+/config-server/mvnw
