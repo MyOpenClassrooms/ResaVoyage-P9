@@ -9,7 +9,6 @@ import brave.sampler.Sampler;
 
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-
 @SpringBootApplication
 @EnableDiscoveryClient
 public class CommandeApplication {
@@ -17,7 +16,7 @@ public class CommandeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CommandeApplication.class, args);
 	}
-
+	
 	@Bean
 	Sampler getSample() {
 		return Sampler.ALWAYS_SAMPLE;
