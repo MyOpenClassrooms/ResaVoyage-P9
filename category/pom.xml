@@ -16,7 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-        <spring-cloud.version>Greenwich.M2</spring-cloud.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
 	</properties>
 
 	<dependencies>
@@ -28,6 +28,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,7 +51,16 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
+	<!-- Dependencies for zipkin and sleuth -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+		<!-- Dependencies for zipkin and sleuth -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

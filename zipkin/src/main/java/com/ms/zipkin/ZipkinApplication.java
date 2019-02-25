@@ -1,14 +1,16 @@
-package com.ms.commentaire;
+package com.ms.zipkin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import zipkin2.server.internal.EnableZipkinServer;
+
 @SpringBootApplication
-public class CommentaireApplication {
+@EnableZipkinServer
+public class ZipkinApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommentaireApplication.class, args);
+		SpringApplication.run(ZipkinApplication.class, args);
 	}
 
 }
-

@@ -1,4 +1,4 @@
-package com.ms.mscommentaire.model;
+package com.ms.commentaire.model;
 
 import java.util.Date;
 
