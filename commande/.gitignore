@@ -25,3 +25,5 @@
 /nbdist/
 /.nb-gradle/
 /build/
+!/mvnw
+!/mvnw.cmd

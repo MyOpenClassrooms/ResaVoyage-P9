@@ -17,6 +17,10 @@ public class Commentaire {
 	private Date date;
 	private Long idaventure;
 	private String content;
+
+
+
+
 	public Long getIdcommentaire() {
 		return idcommentaire;
 	}
