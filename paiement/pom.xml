@@ -43,6 +43,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
@@ -70,6 +71,10 @@
 			<artifactId>tomcat-catalina</artifactId>
 			<version>8.5.37</version>
 		</dependency>
+		<dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

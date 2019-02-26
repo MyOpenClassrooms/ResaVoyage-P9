@@ -1,1 +1,8 @@
 /target/
+/.mvn/
+/.settings/
+/.classpath
+/.project
+/admin.iml
+/mvnw
+/mvnw.cmd
