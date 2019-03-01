@@ -10,5 +10,6 @@ public interface UtilisateurDao extends JpaRepository<Utilisateur, Long>  {
     int countUtilisateurByEmail(String email);
 	Utilisateur findUtilisateurByEmail(String email);
 	int countUtilisateurByPseudo(String pseudo);
+	Utilisateur getByPseudo(String pseudo);
 
 }

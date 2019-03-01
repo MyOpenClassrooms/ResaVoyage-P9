@@ -3,9 +3,7 @@ package com.ms.utilisateur.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ms.utilisateur.model.Utilisateur;
 import com.ms.utilisateur.repository.UtilisateurDao;
@@ -42,5 +40,17 @@ public class UserController {
 		}
 
 	}
+
+	@GetMapping(value = "/utilisateur/id/{id}")
+	public Utilisateur findById(@PathVariable Long id) {
+		return utilisateurDao.getOne(id);
+	}
+
+    @GetMapping(value = "/utilisateur/{pseudo}")
+    public Utilisateur findByUsername(@PathVariable String pseudo){
+        return utilisateurDao.getByPseudo(pseudo);
+    }
+
+
 
 }
