@@ -10,6 +10,7 @@ import brave.sampler.Sampler;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class CommandeApplication {
 
 	public static void main(String[] args) {
