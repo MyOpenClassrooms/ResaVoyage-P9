@@ -17,10 +17,10 @@ public class UserController {
 	@PostMapping(value = "/utilisateur/save")
 	public void add(@RequestBody Utilisateur utilisateur) {
 
-		int nbpseudo = utilisateurDao.countUtilisateurByPseudo(utilisateur.getPseudo());
+		int nbusername = utilisateurDao.countUtilisateurByUsername(utilisateur.getUsername());
 		int nbemail = utilisateurDao.countUtilisateurByEmail(utilisateur.getEmail());
 
-		if (nbpseudo != 1 && nbemail != 1) {
+		if (nbusername != 1 && nbemail != 1) {
 			utilisateurDao.save(utilisateur);
 		}
 	}
@@ -41,14 +41,21 @@ public class UserController {
 
 	}
 
-	@GetMapping(value = "/utilisateur/id/{id}")
+
+    @GetMapping(value = "/utilisateur/email/{email}")
+    public Utilisateur findByEmail(@PathVariable String email) {
+        return utilisateurDao.findByEmail(email);
+    }
+
+
+    @GetMapping(value = "/utilisateur/id/{id}")
 	public Utilisateur findById(@PathVariable Long id) {
 		return utilisateurDao.getOne(id);
 	}
 
-    @GetMapping(value = "/utilisateur/{pseudo}")
-    public Utilisateur findByUsername(@PathVariable String pseudo){
-        return utilisateurDao.getByPseudo(pseudo);
+    @GetMapping(value = "/utilisateur/username/{username}")
+    public Utilisateur findByUsername(@PathVariable String username){
+        return utilisateurDao.getByUsername(username);
     }
 
 
