@@ -1,4 +1,4 @@
-package com.ms.zuul.mszuul.security;
+package com.ms.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

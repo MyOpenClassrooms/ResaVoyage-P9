@@ -1,4 +1,4 @@
-package com.ms.zuul.mszuul.security;
+package com.ms.security;
 
 import java.io.IOException;
 import java.util.List;
