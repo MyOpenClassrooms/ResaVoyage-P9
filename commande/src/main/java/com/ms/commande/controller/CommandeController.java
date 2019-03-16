@@ -2,7 +2,6 @@ package com.ms.commande.controller;
 
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -10,7 +9,6 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,13 +32,13 @@ public class CommandeController {
 	CommandeRepository repository;
 	
 	
-	@RequestMapping(value = "/commande/findAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	public List<Commande> findAll(){
 		 log.info("Récupération de la liste des commandes");
 		 return repository.findAll();
 	}
     
-    @GetMapping(value = "/commande/findCommandById/{id}")
+    @GetMapping(value = "/findCommandById/{id}")
     public Commande findById(@PathVariable Integer id) {
     	Commande commande = repository.findById(id);
     	if(commande==null) throw new CommandeIntrouvableException("La commande avec l'id " + id +
@@ -49,7 +47,7 @@ public class CommandeController {
         return commande;
     }
 	
-    @PostMapping (value = "/commande/save")
+    @PostMapping (value = "/save")
     public ResponseEntity<Void> saveCommande(@RequestBody Commande commande) {
     	Commande commandAdded = repository.save(commande);
     	
@@ -66,7 +64,7 @@ public class CommandeController {
     }
 
     
-    @PutMapping (value = "/commande/update/{id}")
+    @PutMapping (value = "/update/{id}")
     public Commande updateCommande(@Valid @RequestBody Commande commandeDetails, @PathVariable Integer id) {
     	
          Commande commande = repository.findById(id);
@@ -81,6 +79,14 @@ public class CommandeController {
          
     }
     
+    @RequestMapping(value = "/userId/{userId}", method = RequestMethod.GET)
+	public List<Commande> findByUser(@PathVariable Integer userId) {
+        List<Commande> commandes = new ArrayList<>(repository.findByUser(userId));
+        if (commandes.isEmpty()){
+            throw new CommandeIntrouvableException("Il n'existe aucune commande avec l'id : " + userId);
+        }
+        return commandes;
+	}
     
     
 }
