@@ -15,18 +15,18 @@ public class CategoryController {
     CategoryRepository repository;
 
 
-    @RequestMapping(value = "/category/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public List<Category> getAllCategories(){
         return repository.findAll();
     }
 
-    @GetMapping(value = "/category/{id}")
+    @GetMapping(value = "/{id}")
     public Category findById(@PathVariable Integer id) {
         return repository.getOne(id);
     }
 
 
-    @GetMapping(value = "/category/name/{title}")
+    @GetMapping(value = "/name/{title}")
     public Category findByTitle(@PathVariable String title){
         return repository.getByTitle(title);
     }

@@ -38,18 +38,13 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 // allow all who are accessing "auth" service
                 .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
                 // must be an admin if trying to access admin area (authentication is also required here)
-                .antMatchers("/comments/admin/**").hasRole("ADMIN")
-                .antMatchers("/categories/admin/**").hasRole("ADMIN")
-                .antMatchers("/adventures/admin/**").hasRole("ADMIN")
-                .antMatchers("/adventures/sessions/admin/**").hasRole("ADMIN")
-                .antMatchers("/users/api/admin/**").hasRole("ADMIN")
-                .antMatchers("/images/api/admin/**").hasRole("ADMIN")
-                .antMatchers("/images/api/adventure/admin/**").hasRole("ADMIN")
-                .antMatchers("/images/api/category/admin/**").hasRole("ADMIN")
-                .antMatchers("/images/api/user/admin/**").hasRole("ADMIN")
-                .antMatchers("/orders/api/admin/**").hasRole("ADMIN")
-                .antMatchers("/orders/api/demands/admin/**").hasRole("ADMIN")                // Any other request must be authenticated
-                .anyRequest().authenticated();
+                .antMatchers("/commentaire/admin/**").hasRole("ADMIN")
+                .antMatchers("/category/admin/**").hasRole("ADMIN")
+                .antMatchers("/aventure/admin/**").hasRole("ADMIN")
+                .antMatchers("/aventure/sessions/admin/**").hasRole("ADMIN")
+                .antMatchers("/utilisateur/admin/**").hasRole("ADMIN")
+                .antMatchers("/commande/admin/**").hasRole("ADMIN")                // Any other request must be authenticated
+                .anyRequest().permitAll();
     }
 	
 	@Bean

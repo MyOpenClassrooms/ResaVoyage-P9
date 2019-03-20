@@ -19,9 +19,19 @@ public class Category {
     private String description;
 
 
-    public Category(String title, String description) {
+    @Column(name = "image")
+    private String image;
+
+
+    @Column(name = "keywords")
+    private String keywords;
+
+
+    public Category(String title, String description, String image, String keywords) {
         this.title = title;
         this.description = description;
+        this.image = image;
+        this.keywords = keywords;
     }
 
     public Category() {
@@ -51,6 +61,22 @@ public class Category {
         this.description = description;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+
 
     @Override
     public String toString() {
@@ -58,6 +84,8 @@ public class Category {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", keywords='" + keywords + '\'' +
                 '}';
     }
 }

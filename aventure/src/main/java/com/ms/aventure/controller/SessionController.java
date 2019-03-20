@@ -26,7 +26,7 @@ public class SessionController {
     }
 
 
-    @GetMapping(value = "/session/{id}")
+    @GetMapping(value = "/session/{sessionId}")
     public Session findById(@PathVariable Integer sessionId) {
         return repository.getOne(sessionId);
     }

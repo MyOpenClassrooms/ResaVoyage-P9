@@ -18,18 +18,20 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
-import com.ms.zuul.mszuul.security.*;
+
 
 public class JwtTokenAuthenticationFilter extends  OncePerRequestFilter {
     
 	private final JwtConfig jwtConfig;
 	
-	public JwtTokenAuthenticationFilter(JwtConfig jwtConfig) {
+	JwtTokenAuthenticationFilter(JwtConfig jwtConfig) {
 		this.jwtConfig = jwtConfig;
 	}
 
 	@Override
-	protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain chain)
+	protected void doFilterInternal(@NotNull HttpServletRequest request,
+                                    @NotNull HttpServletResponse response,
+                                    @NotNull FilterChain chain)
 			throws ServletException, IOException {
 		
 		// 1. get the authentication header. Tokens are supposed to be passed in the authentication header
