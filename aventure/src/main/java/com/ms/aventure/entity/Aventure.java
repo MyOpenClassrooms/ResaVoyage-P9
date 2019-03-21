@@ -1,6 +1,10 @@
 package com.ms.aventure.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,6 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "aventure")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Aventure implements Serializable {
 
 
@@ -37,10 +42,10 @@ public class Aventure implements Serializable {
     @Column(name = "price")
     private Integer price;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "aventure", targetEntity = Session.class, cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+   // @JsonBackReference
+    @JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @OneToMany(mappedBy = "aventure" , targetEntity = Session.class, cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Session> sessions = new ArrayList<>(0);
-
 
     public Aventure(String title, String description, Integer nbparticipant, String location, Integer price) {
         this.title = title;

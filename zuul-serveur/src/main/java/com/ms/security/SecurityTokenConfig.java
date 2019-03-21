@@ -64,6 +64,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
         corsConfiguration.addExposedHeader("Authorization");
         corsConfiguration.addAllowedMethod("GET");
         corsConfiguration.addAllowedMethod("POST");
+        corsConfiguration.addAllowedMethod("PUT");
         corsConfiguration.addAllowedMethod("PATCH");
         corsConfiguration.addAllowedMethod("DELETE");
 

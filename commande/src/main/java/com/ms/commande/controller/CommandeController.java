@@ -65,7 +65,7 @@ public class CommandeController {
 
     
     @PutMapping (value = "/update/{id}")
-    public Commande updateCommande(@Valid @RequestBody Commande commandeDetails, @PathVariable Integer id) {
+    public Commande updateCommande(@RequestBody Commande commandeDetails, @PathVariable Integer id) {
     	
          Commande commande = repository.findById(id);
          commande.setUserId(commandeDetails.getUserId());
