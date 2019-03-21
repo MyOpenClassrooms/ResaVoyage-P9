@@ -16,7 +16,7 @@ public class AventureController {
     @Autowired
     AventureRepository repository;
 
-   
+
     @RequestMapping(value = "/aventure/getAll", method = RequestMethod.GET)
     public List<Aventure> getAllAventures(){
         return repository.findAll();
