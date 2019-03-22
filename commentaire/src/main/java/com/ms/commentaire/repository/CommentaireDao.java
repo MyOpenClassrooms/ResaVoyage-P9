@@ -8,6 +8,6 @@ import com.ms.commentaire.model.Commentaire;
 @Repository
 public interface CommentaireDao  extends JpaRepository<Commentaire, Long> {
 	
-	Commentaire findByIdaventure(Long idaventure);
+	Iterable<Commentaire> findByIdaventure(Long idaventure);
 
 }
