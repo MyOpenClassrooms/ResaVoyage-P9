@@ -19,14 +19,13 @@ public class CommentaireController {
 	@Autowired
     CommentaireDao comDao;
 	
-	@GetMapping(value = "/comments/{idaventure}")
+	@GetMapping(value = "/idaventure/{idaventure}")
     public List<Commentaire> listbyidaventure(@PathVariable Long idaventure) {
         
         List<Commentaire> comments = new ArrayList<>();
-        comments.add(comDao.findByIdaventure(idaventure));
+        comDao.findByIdaventure(idaventure).iterator().forEachRemaining(comments::add);
         return comments;
-    }
-
+                                                                             }
 	@PostMapping(value = "/commentaire/save")
     public void save(@RequestBody Commentaire comment) {
         comDao.save(comment);
