@@ -26,15 +26,14 @@ public class AventureController {
     public Aventure findById(@PathVariable Integer id) {
         return repository.getOne(id);
     }
-    
-//    @RequestMapping(value = "/getBySession/{sessionId}", method = RequestMethod.GET)
-//    public Aventure getAventureBySession(@PathVariable Integer sessionId) throws Exception {
-//    	Aventure aventure = repository.findAventureBySessionId(sessionId);
-//        if (aventure == null){
-//            throw new Exception("Il n'existe aucune aventure avec l'id de session: " + sessionId);
-//        }
-//        return aventure;
-//    }
+
+
+    @GetMapping(value = "/categoryId/{categoryId}")
+    public List<Aventure> getAventuresByCategoryId(@PathVariable Integer categoryId){
+        return repository.findAllByCategoryId(categoryId);
+    }
+
+
 
 
 

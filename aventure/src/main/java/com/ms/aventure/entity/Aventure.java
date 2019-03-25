@@ -47,24 +47,23 @@ public class Aventure implements Serializable {
 
 
     @Column(name = "category_id")
-    private String category_id;
+    private Integer categoryId;
 
 
-   // @JsonBackReference
     @JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @OneToMany(mappedBy = "aventure" , targetEntity = Session.class, cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Session> sessions = new ArrayList<>(0);
 
 
-
-    public Aventure(String title, String description, Integer nbparticipant, String location, Integer price, String image) {
-
+    public Aventure(String title, String description, Integer nbparticipant, String location, Integer price, String image, Integer categoryId, List<Session> sessions) {
         this.title = title;
         this.description = description;
         this.nbparticipant = nbparticipant;
         this.location = location;
         this.price = price;
         this.image = image;
+        this.categoryId = categoryId;
+        this.sessions = sessions;
     }
 
     public Aventure() {
@@ -134,12 +133,12 @@ public class Aventure implements Serializable {
         this.image = image;
     }
 
-    public String getCategory_id() {
-        return category_id;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(String category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     @Override
@@ -152,6 +151,8 @@ public class Aventure implements Serializable {
                 ", location='" + location + '\'' +
                 ", price=" + price +
                 ", image='" + image + '\'' +
+                ", categoryId=" + categoryId +
+                ", sessions=" + sessions +
                 '}';
     }
 }
