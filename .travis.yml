@@ -4,4 +4,6 @@ sudo: false
 services:
   - docker
 before_script:
-  - docker-compose -f docker/docker-compose.yml stop
+  - docker-compose -f docker/docker-compose.yml up --build
+notifications:
+  email: false
