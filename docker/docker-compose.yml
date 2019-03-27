@@ -1,0 +1,56 @@
+version: '2.2'
+services:
+    config-server:
+        container_name: config-server
+        build:
+            context: .
+            dockerfile: Dockerfile-configServer
+        image: config-server:latest
+        expose:
+            - 9092
+        ports:
+            - 9092:9092
+        networks:
+            - emp-network
+        volumes:
+            - config-repo:/var/lib/config-repo
+            
+    eureka-server:
+        container_name: eureka-server
+        build:
+            context: .
+            dockerfile: Dockerfile-eurekaServer
+        image: eureka-server:latest
+        expose:
+            - 9093
+        ports:
+            - 9093:9093
+        networks:
+            - emp-network 
+        links:
+            - config-server:config-server
+
+    ZuulServer:
+        container_name: Zuul-Server
+        build:
+            context: .
+            dockerfile: Dockerfile-zuulServer
+        image: zuulserver:latest
+        expose:
+            - 9004
+        ports:
+            - 9004:9004
+        networks:
+            - emp-network
+        links:
+            - eureka-server:eureka-server
+            - config-server:config-server
+        depends_on:
+            - eureka-server
+        logging:
+            driver: json-file    
+
+
+
+
+            
