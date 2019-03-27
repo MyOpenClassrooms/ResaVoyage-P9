@@ -9,3 +9,5 @@ sudo: false
 #  email: false
 install: true
 script: mvn --file ./aventure/pom.xml clean package
+notifications:
+email: false
