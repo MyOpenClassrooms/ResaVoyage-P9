@@ -232,11 +232,11 @@ services:
       - ZIPKIN_HOST=zipkin-server
       - DB_HOST=commande-db
       - DB_NAME=commande-db
-    networks:
-      - resaVoyage-network
-    depends_on:
-      - config-server
-      - commande-db
+        networks:
+          - resaVoyage-network
+        depends_on:
+          - config-server
+          - commande-db
       
     paiement-ms:
         container_name: paiement-ms
@@ -245,9 +245,9 @@ services:
             dockerfile: Dockerfile-paiement
         image: paiement-ms:latest
     environment:
-          - CONFIG_SERVER_HOST=config-server
-          - EUREKA_HOST=eureka-server
-          - ZIPKIN_HOST=zipkin-server
+      - CONFIG_SERVER_HOST=config-server
+      - EUREKA_HOST=eureka-server
+      - ZIPKIN_HOST=zipkin-server
         networks:
           - resaVoyage-network
         depends_on:
@@ -259,5 +259,5 @@ services:
             context: .
             dockerfile: Dockerfile-resaVoyageFront
         image: resaVoyage-front-front:latest
-    ports:
-      - 4200:4200        
+        ports:
+          - 4200:4200        
