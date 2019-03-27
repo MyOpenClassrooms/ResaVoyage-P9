@@ -1,0 +1,46 @@
+<section class="container mt-4 mb-4">
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="widget stacked widget-table action-table">
+
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>Liste des commandes</h3>
+          </div> <!-- /widget-header -->
+
+          <div class="widget-content">
+
+            <table class="table table-striped table-bordered" >
+              <thead>
+                <tr>
+                  <th>Aventure</th>
+                  <th>Prix</th>
+                  <th>Date commande</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let c of commandesByUser">
+                <tr>
+                  <td>{{c.aventure}}</td>
+                  <td>{{c.prix}}</td>
+                  <td>{{c.date | date: 'dd/MM/yyyy'}}</td>
+                  <td *ngIf="c.status == true">Payé </td>
+                  <td *ngIf="c.status == false">Non payé <a class="btn btn-primary" [routerLink]="['/payment/commande', c.id, c.prix]" >Payer</a></td>
+                </tr>
+     
+              </tbody>
+            </table>
+
+          </div> <!-- /widget-content -->
+
+        </div> <!-- /widget -->
+      </div>
+    </div>
+  </div>
+
+
+</section>
+

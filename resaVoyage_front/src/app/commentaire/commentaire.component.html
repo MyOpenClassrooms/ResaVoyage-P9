@@ -1,0 +1,41 @@
+
+    <div class="row">
+        <div class="col-md-6 col-sm-10 col-sm-offset-1" id="logout">
+            <h4 class="titre">Commentaires</h4>
+            <div class="media comment-box" *ngFor="let c of commentsByAdventure">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{c.idutilisateur}} <h6 class="reviews">
+                            {{c.date |date:short}}
+                        </h6>
+                    </h4>
+                    <p>{{c.content}}</p>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-10 col-sm-offset-1" id="logout">
+            <h4 class="titre">Laissez un commentaire</h4>
+            <form [formGroup]="f" (ngSubmit)="onFormSubmit(f.value)">
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <input type="text" formControlName="content" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit">SUBMIT</button>
+                </div>
+                <p *ngIf="dataSaved">
+                    {{message}}
+                </p>
+            </form>
+
+
+        </div>
+    </div>
+   

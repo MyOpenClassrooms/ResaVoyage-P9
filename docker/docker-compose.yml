@@ -1,4 +1,7 @@
 version: '2.2'
+networks:
+    resaVoyage-network:
+    
 services:
     config-server:
         container_name: config-server
@@ -7,13 +10,13 @@ services:
             dockerfile: Dockerfile-configServer
         image: config-server:latest
         expose:
-            - 9092
+          - 9092
         ports:
-            - 9092:9092
+          - 9092:9092
         networks:
-            - emp-network
+          - resaVoyage-network
         volumes:
-            - config-repo:/var/lib/config-repo
+          - config-repo:/var/lib/config-repo
             
     eureka-server:
         container_name: eureka-server
@@ -22,35 +25,239 @@ services:
             dockerfile: Dockerfile-eurekaServer
         image: eureka-server:latest
         expose:
-            - 9093
+          - 9093
         ports:
-            - 9093:9093
+          - 9093:9093
         networks:
-            - emp-network 
-        links:
-            - config-server:config-server
+          - resaVoyage-network 
+        depends_on:
+          - config-server
 
-    ZuulServer:
+    Zuul-Server:
         container_name: Zuul-Server
         build:
             context: .
             dockerfile: Dockerfile-zuulServer
         image: zuulserver:latest
+        environment:
+          - CORS_ALLOW_CREDENTIALS=true
+          - CORS_ALLOWED_HEADERS=*
+          - CORS_ALLOWED_METHODS=*
+          - CORS_ALLOWED_ORIGINS=*
+          - CORS_EXPOSED_HEADERS=Authorization,x-xsrf-token,Access-Control-Allow-Headers,Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Set-Cookie
+          - CORS_MAX_AGE=1800
         expose:
-            - 9004
+          - 9004
         ports:
-            - 9004:9004
+          - 9004:9004
         networks:
-            - emp-network
+          - resaVoyage-network
         links:
-            - eureka-server:eureka-server
-            - config-server:config-server
+          - eureka-server:eureka-server
+          - config-server:config-server
         depends_on:
-            - eureka-server
+          - config-server
         logging:
-            driver: json-file    
+            driver: json-file  
+                
+    admin-server:
+        container_name: admin-server
+        build:
+            context: .
+            dockerfile: Dockerfile-admin
+        image: admin-server:latest
+        expose:
+          - 9105
+        ports:
+          - 9105:9105
+        networks:
+          - resaVoyage-network 
+        depends_on:
+          - config-server
+          
+    zipkin-server:
+        container_name: zipkin-server
+        build:
+            context: .
+            dockerfile: Dockerfile-zipkin
+        image: zipkin-server:latest
+        networks:
+          - resaVoyage-network 
+        expose:
+          - 9411
+        ports:
+          - 9411:9411    
 
+    auth-server:
+        container_name: auth-server
+        build:
+            context: .
+            dockerfile: Dockerfile-authServer
+        image: auth-server:latest
+        environment:
+          - CONFIG_SERVER_HOST=config-server
+          - EUREKA_HOST=eureka-server
+          - ZIPKIN_HOST=zipkin-server
+        networks:
+          - resaVoyage-network 
+        depends_on:
+          - config-server   
+          
+    utilisateur-db:
+        container_name: utilisateur-db
+        build:
+            context: .
+            dockerfile: Dockerfile-dbUtilisateur
+        image: utilisateur-db:latest
+        networks:
+          - resaVoyage-network
+      
+    utilisteur-ms:
+        container_name: utilisateur-ms
+        build:
+            context: .
+            dockerfile: Dockerfile-utilisateur
+        image: utilisateur-ms:latest
+    environment:
+      - CONFIG_SERVER_HOST=config-server
+      - EUREKA_HOST=eureka-server
+      - ZIPKIN_HOST=zipkin-server
+      - DB_HOST=utilisateur-db
+      - DB_NAME=utilisateur-db
+    networks:
+      - resaVoyage-network
+    depends_on:
+      - config-server
+      - utilisateur-db 
 
-
-
+    aventure-db:
+        container_name: aventure-db
+        build:
+            context: .
+            dockerfile: Dockerfile-dbAventure
+        image: aventure-db:latest
+        networks:
+          - resaVoyage-network      
             
+    aventure-ms:
+        container_name: aventure-ms
+        build:
+            context: .
+            dockerfile: Dockerfile-aventure
+        image: aventure-ms:latest
+    environment:
+      - CONFIG_SERVER_HOST=config-server
+      - EUREKA_HOST=eureka-server
+      - ZIPKIN_HOST=zipkin-server
+      - DB_HOST=aventure-db
+      - DB_NAME=aventure-db
+    networks:
+      - resaVoyage-network
+    depends_on:
+      - config-server
+      - aventure-db     
+
+    categorie-db:
+        container_name: categorie-db
+        build:
+            context: .
+            dockerfile: Dockerfile-dbCategorie
+        image: categorie-db:latest
+        networks:
+          - resaVoyage-network
+
+    categorie-ms:
+        container_name: categorie-ms
+        build:
+            context: .
+            dockerfile: Dockerfile-categorie
+        image: categorie-ms:latest
+    environment:
+      - CONFIG_SERVER_HOST=config-server
+      - EUREKA_HOST=eureka-server
+      - ZIPKIN_HOST=zipkin-server
+      - DB_HOST=categorie-db
+      - DB_NAME=categorie-db
+    networks:
+      - resaVoyage-network
+    depends_on:
+      - config-server
+      - categorie-db
+      
+    commentaire-db:
+        container_name: commentaire-db
+        build:
+            context: .
+            dockerfile: Dockerfile-dbCommentaire
+        image: commentaire-db:latest
+        networks:
+          - resaVoyage-network
+          
+    commentaire-ms:
+        container_name: commentaire-ms
+        build:
+            context: .
+            dockerfile: Dockerfile-commentaire
+        image: commentaire-ms:latest
+    environment:
+      - CONFIG_SERVER_HOST=config-server
+      - EUREKA_HOST=eureka-server
+      - ZIPKIN_HOST=zipkin-server
+      - DB_HOST=commentaire-db
+      - DB_NAME=commentaire-db
+    networks:
+      - resaVoyage-network
+    depends_on:
+      - config-server
+      - commentaire-db
+      
+    commande-db:
+        container_name: commande-db
+        build:
+            context: .
+            dockerfile: Dockerfile-dbCommande
+        image: commande-db:latest
+        networks:
+          - resaVoyage-network
+          
+    commande-ms:
+        container_name: commande-ms
+        build:
+            context: .
+            dockerfile: Dockerfile-commande
+        image: commande-ms:latest
+    environment:
+      - CONFIG_SERVER_HOST=config-server
+      - EUREKA_HOST=eureka-server
+      - ZIPKIN_HOST=zipkin-server
+      - DB_HOST=commande-db
+      - DB_NAME=commande-db
+    networks:
+      - resaVoyage-network
+    depends_on:
+      - config-server
+      - commande-db
+      
+    paiement-ms:
+        container_name: paiement-ms
+        build:
+            context: .
+            dockerfile: Dockerfile-paiement
+        image: paiement-ms:latest
+    environment:
+          - CONFIG_SERVER_HOST=config-server
+          - EUREKA_HOST=eureka-server
+          - ZIPKIN_HOST=zipkin-server
+        networks:
+          - resaVoyage-network
+        depends_on:
+          - config-server  
+
+    resaVoyage-front:
+        container_name: resaVoyage-front
+        build:
+            context: .
+            dockerfile: Dockerfile-resaVoyageFront
+        image: resaVoyage-front-front:latest
+    ports:
+      - 4200:4200        
