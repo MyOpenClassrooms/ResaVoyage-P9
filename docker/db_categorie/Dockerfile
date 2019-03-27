@@ -4,4 +4,4 @@ ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=0302
 ENV POSTGRES_DB=categorie
 
-COPY scripts/* /docker-entrypoint-initdb.d/ 
+COPY init/db/docker-entrypoint-initdb.d/* /docker-entrypoint-initdb.d/ 
