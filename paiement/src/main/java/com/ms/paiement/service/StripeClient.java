@@ -21,7 +21,7 @@ public class StripeClient {
     public Charge chargeCreditCard(String token, double amount) throws Exception {
         Map<String, Object> chargeParams = new HashMap<String, Object>();
         chargeParams.put("amount", (int)(amount * 100));
-        chargeParams.put("currency", "USD");
+        chargeParams.put("currency", "EUR");
         chargeParams.put("source", token);
         Charge charge = Charge.create(chargeParams);
         return charge;

@@ -1,0 +1,1 @@
+INSERT INTO db_commentaire.utilisateur (idutilisateur, email, username, password, firstname, lastname, address, postcode, city, phonenumber, role) VALUES (1, 'hadjiben@gmail.com', 'bhadji', '$2a$10$XluGVp6pNXVu5mwEOJUgIetzd2mue3qWroPV21V8xCkSGt54gqY8u', 'ben', 'hadji', '1 Bis, Rue Verte', '94400', 'Vitry', '123456789', 'ADMIN');
