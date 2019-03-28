@@ -3,10 +3,9 @@ jdk: oraclejdk8
 sudo: false
 services:
   - docker
-before_script:
-  - docker-compose -f docker/docker-compose.yml up --build
-
 install: true
 script: mvn --file ./aventure/pom.xml clean package
+before_script:
+  - docker-compose -f docker/docker-compose.yml up --build
 notifications:
 email: false
