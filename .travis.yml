@@ -4,8 +4,8 @@ sudo: false
 services:
   - docker
 install: true
-script: mvn --file ./aventure/pom.xml clean package
-before_script:
+before_script: mvn --file ./aventure/pom.xml clean package
+script:
   - docker-compose -f docker/docker-compose.yml up --build
 notifications:
 email: false
