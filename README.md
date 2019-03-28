@@ -2,8 +2,9 @@
 
 [![Build Status](https://travis-ci.org/MyOpenClassrooms/ResaVoyage-P9.svg?branch=develop)](https://travis-ci.org/MyOpenClassrooms/ResaVoyage-P9)
 
-L'agence  "Wild Adventures" est spécialisée dans l'organisation des voyages d'aventures de fortes sensations.
 OpenClassrooms - Parcours Expert en JAVA EE - Projet 9
+
+L'agence  "Wild Adventures" est spécialisée dans l'organisation des voyages d'aventures de fortes sensations.
 
 Ces dernières années, le catalogue de "Wild Adventures" ne cesse d'évoluer. C'est pour cette raison que l'agence a décidé
 
